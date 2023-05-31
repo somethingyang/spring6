@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:util="http://www.springframework.org/schema/util"
+
+       xmlns:p="http://www.springframework.org/schema/p"
+
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/util
+       http://www.springframework.org/schema/util/spring-util.xsd
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--
+    1 创建三个对象
+    2 注入普通类型的属性
+    3 使用util类型定义
+    4 在学生bean引入util类型定义bean，完成list、map类型的注入
+    -->
+    <bean id="lessonone" class="com.yqy.dimap.Lesson">
+        <property name="lessonName" value="语文"/>
+    </bean>
+    <bean id="lessontwo" class="com.yqy.dimap.Lesson">
+        <property name="lessonName" value="数学"/>
+    </bean>
+    <bean id="teacherone" class="com.yqy.dimap.Teacher">
+        <property name="teacherId" value="100"/>
+        <property name="teachername" value="张老师"/>
+    </bean>
+    <bean id="teachertwo" class="com.yqy.dimap.Teacher">
+        <property name="teacherId" value="101"/>
+        <property name="teachername" value="杨老师"/>
+    </bean>
+
+    <bean id="student" class="com.yqy.dimap.Student">
+        <property name="sid" value="10000"/>
+        <property name="sname" value="小明"/>
+        <property name="lessonList" ref="lessonList"/>
+        <property name="teacherMap" ref="teacherMap"/>
+        <!--注入list和map类型属性-->
+    </bean>
+
+    <util:list id="lessonList">
+        <ref bean="lessonone"/>
+        <ref bean="lessontwo"/>
+    </util:list>
+
+    <util:map id="teacherMap">
+        <entry key="10010" value-ref="teacherone"/>
+        <entry>
+            <key>
+                <value>10011</value>
+            </key>
+            <ref bean="teachertwo"/>
+        </entry>
+    </util:map>
+
+    <!--p命名空间注入-->
+    <bean id="studentp" class="com.yqy.dimap.Student"
+        p:sid="100" p:sname="小王" p:lessonList-ref="lessonList" p:teacherMap-ref="teacherMap">
+    </bean>
+
+</beans>
+
+
+
+
+
+
+
+
+
+
+
+
+

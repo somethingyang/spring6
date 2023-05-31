@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="empone" class="com.yqy.ditest.Emp">
+        <property name="ename" value="张三"/>
+        <property name="age" value="20"/>
+    </bean>
+    <bean id="emptwo" class="com.yqy.ditest.Emp">
+        <property name="ename" value="李四"/>
+        <property name="age" value="30"/>
+    </bean>
+    <bean id="dept" class="com.yqy.ditest.Dept">
+        <property name="dname" value="技术部"/>
+        <property name="empList">
+            <list>
+                <ref bean="empone"/>
+                <ref bean="emptwo"/>
+            </list>
+        </property>
+
+    </bean>
+
+</beans>

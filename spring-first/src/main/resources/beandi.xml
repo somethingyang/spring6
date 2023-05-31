@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!--  set方法注入  -->
+    <bean id="book" class="com.yqy.di.Book">
+        <property name="bname" value="前端开发"></property>
+        <property name="author" value="yqy"></property>
+<!--        <property name="other">-->
+<!--            <null/>-->
+<!--        </property>-->
+<!--        <property name="other" value="&lt;&gt;"></property>-->
+        <property name="other">
+                <value><![CDATA[a < b]]></value>
+        </property>
+    </bean>
+
+<!--  构造方法注入  -->
+    <bean id="bookCon" class="com.yqy.di.Book">
+        <constructor-arg name="bname" value="java开发"></constructor-arg>
+        <constructor-arg name="author" value="yqy"></constructor-arg>
+    </bean>
+</beans>
